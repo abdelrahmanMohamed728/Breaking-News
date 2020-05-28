@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false">
+
+        <ImageView
+            android:id="@+id/headlineImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:alpha=".8"
+            android:scaleType="centerCrop"
+            android:src="@drawable/test"></ImageView>
+
+        <TextView
+            android:id="@+id/headlineTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="120dp"
+            android:elevation="80dp"
+            android:fontFamily="@font/bebasneueregular"
+            android:maxLines="2"
+            android:outlineProvider="paddedBounds"
+            android:text="Headline Test"
+            android:textColor="#fff"
+            android:textSize="25sp"
+            android:textStyle="bold"></TextView>
+    </RelativeLayout>
+</LinearLayout>
