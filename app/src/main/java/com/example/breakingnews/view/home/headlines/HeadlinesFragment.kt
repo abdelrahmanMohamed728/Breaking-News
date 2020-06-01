@@ -16,8 +16,8 @@ import com.example.breakingnews.view.home.headlines.adapter.HeadlineAdapter
 import kotlinx.android.synthetic.main.fragment_headlines.*
 import org.koin.android.ext.android.get
 
-class HeadlinesFragment : BaseFragment() {
-    lateinit var viewModel: HeadlinesViewModel
+class HeadlinesFragment : BaseFragment<HeadlinesViewModel>() {
+
     lateinit var headlinesAdapter: HeadlineAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +29,6 @@ class HeadlinesFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initViewModel()
         initRecycler()
         initObservers()
     }
@@ -57,7 +56,4 @@ class HeadlinesFragment : BaseFragment() {
         headlinesAdapter.notifyDataSetChanged()
     }
 
-    private fun initViewModel() {
-        viewModel = get()
-    }
 }
