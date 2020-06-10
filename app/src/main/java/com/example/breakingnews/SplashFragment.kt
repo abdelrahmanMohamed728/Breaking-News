@@ -12,9 +12,10 @@ import io.saeid.fabloading.LoadingView
 import kotlinx.android.synthetic.main.fragment_splash.*
 import android.os.CountDownTimer
 import androidx.lifecycle.ViewModel
+import com.example.breakingnews.base.BaseViewModel
 
 
-class SplashFragment : BaseFragment<ViewModel>() {
+class SplashFragment : BaseFragment<BaseViewModel>() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

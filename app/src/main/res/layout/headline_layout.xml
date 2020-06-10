@@ -16,7 +16,14 @@
             android:alpha=".8"
             android:scaleType="centerCrop"
             android:src="@drawable/test"></ImageView>
-
+        <ImageView
+            android:id="@+id/head2lineImage"
+            android:background="@drawable/opacity_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:alpha=".8"
+            android:scaleType="centerCrop"
+            ></ImageView>
         <TextView
             android:id="@+id/headlineTextView"
             android:layout_width="wrap_content"
