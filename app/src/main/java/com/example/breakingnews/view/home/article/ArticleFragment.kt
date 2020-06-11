@@ -9,6 +9,8 @@ import android.view.ViewGroup
 
 import com.example.breakingnews.R
 import com.example.breakingnews.base.BaseFragment
+import com.example.breakingnews.model.Article
+import kotlinx.android.synthetic.main.fragment_article.*
 
 class ArticleFragment : BaseFragment<ArticleViewModel>() {
 
@@ -19,4 +21,10 @@ class ArticleFragment : BaseFragment<ArticleViewModel>() {
         return inflater.inflate(R.layout.fragment_article, container, false)
     }
 
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        var article = arguments?.getSerializable("article") as Article
+        testText.text = article.title
+    }
 }

@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
+import com.example.breakingnews.R
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.get
 import org.koin.androidx.scope.currentScope
@@ -27,8 +28,28 @@ open class BaseFragment<T : BaseViewModel > : Fragment(){
         startActivity(intent)
     }
 
+    fun addFragment(fragment : Fragment){
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.replace(getContainer(), fragment, tag)?.addToBackStack("")?.commit()
+    }
+
+    fun addFragmentWithBundle(fragment: Fragment , bundle: Bundle){
+        fragment.arguments = bundle
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.replace(getContainer(), fragment, tag)?.addToBackStack("")?.commit()
+    }
+
     fun showSnackBar(view: View,message : String){
         Snackbar.make(view,message,Snackbar.LENGTH_LONG).show()
+    }
+
+    private fun getBaseActivity():BaseActivity{
+        return (activity as BaseActivity)
+    }
+
+    private fun getContainer():Int{
+        var activity = getBaseActivity()
+        return activity.container
     }
 
 }
