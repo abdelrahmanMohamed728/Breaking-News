@@ -2,6 +2,7 @@ package com.example.breakingnews.Koin_DI
 
 import com.example.breakingnews.repo.HeadlineRepo
 import com.example.breakingnews.repo.api.WebService
+import com.example.breakingnews.view.home.article.ArticleViewModel
 import com.example.breakingnews.view.home.headlines.HeadlinesViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
@@ -12,6 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val viewModelsModule = module {
     viewModel { HeadlinesViewModel(get()) }
+    viewModel { ArticleViewModel() }
 }
 
 val repoModule = module {

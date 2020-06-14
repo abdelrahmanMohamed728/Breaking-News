@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 
 import com.example.breakingnews.R
 import com.example.breakingnews.base.BaseFragment
@@ -24,7 +25,13 @@ class ArticleFragment : BaseFragment<ArticleViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var article = arguments?.getSerializable("article") as Article
-        testText.text = article.title
+        viewModel.extractArguments(arguments!!)
+    }
+
+    override fun initObservers() {
+        super.initObservers()
+        viewModel.articleLiveData.observe(this , Observer {
+            showSnackBar(view!!,it.title)
+        })
     }
 }

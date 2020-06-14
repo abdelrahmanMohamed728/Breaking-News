@@ -31,11 +31,9 @@ class HeadlinesFragment : BaseFragment<HeadlinesViewModel>() , OnClickItem {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecycler()
-        initObservers()
     }
 
-    private fun initRecycler() {
+    override fun initRecycler() {
         viewModel.getHeadlines()
         headlinesAdapter =
             HeadlineAdapter(
@@ -48,7 +46,7 @@ class HeadlinesFragment : BaseFragment<HeadlinesViewModel>() , OnClickItem {
         topHeadlinesRV.adapter = headlinesAdapter
     }
 
-    private fun initObservers() {
+    override fun initObservers() {
         viewModel.headlinesLiveData.observe(this, Observer {
             updateAdapter(it)
         })

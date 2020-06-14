@@ -15,41 +15,56 @@ import org.koin.core.KoinComponent
 import java.lang.reflect.ParameterizedType
 import kotlin.reflect.KClass
 
-open class BaseFragment<T : BaseViewModel > : Fragment(){
+open class BaseFragment<T : BaseViewModel> : Fragment(), InitFragment {
     val viewModel: T by lazy { getViewModel(viewModelClass()) }
+
     @Suppress("UNCHECKED_CAST")
     private fun viewModelClass(): KClass<T> {
         return ((javaClass.genericSuperclass as ParameterizedType)
             .actualTypeArguments[0] as Class<T>).kotlin
     }
 
-    fun addActivity(destActivity : AppCompatActivity){
-        val intent = Intent(activity,destActivity::class.java)
+    fun addActivity(destActivity: AppCompatActivity) {
+        val intent = Intent(activity, destActivity::class.java)
         startActivity(intent)
     }
 
-    fun addFragment(fragment : Fragment){
+    fun addFragment(fragment: Fragment) {
         activity?.supportFragmentManager?.beginTransaction()
             ?.replace(getContainer(), fragment, tag)?.addToBackStack("")?.commit()
     }
 
-    fun addFragmentWithBundle(fragment: Fragment , bundle: Bundle){
+    fun addFragmentWithBundle(fragment: Fragment, bundle: Bundle) {
         fragment.arguments = bundle
         activity?.supportFragmentManager?.beginTransaction()
             ?.replace(getContainer(), fragment, tag)?.addToBackStack("")?.commit()
     }
 
-    fun showSnackBar(view: View,message : String){
-        Snackbar.make(view,message,Snackbar.LENGTH_LONG).show()
+    fun showSnackBar(view: View, message: String) {
+        Snackbar.make(view, message, Snackbar.LENGTH_LONG).show()
     }
 
-    private fun getBaseActivity():BaseActivity{
+    private fun getBaseActivity(): BaseActivity {
         return (activity as BaseActivity)
     }
 
-    private fun getContainer():Int{
+    private fun getContainer(): Int {
         var activity = getBaseActivity()
         return activity.container
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initObservers()
+        initRecycler()
+    }
+
+    override fun initObservers() {
+
+    }
+
+    override fun initRecycler() {
+
     }
 
 }
