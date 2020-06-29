@@ -18,6 +18,7 @@ val viewModelsModule = module {
 
 val repoModule = module {
 
+
     factory(named("BASE_URL")) {
         "https://newsapi.org/v2/"
     }

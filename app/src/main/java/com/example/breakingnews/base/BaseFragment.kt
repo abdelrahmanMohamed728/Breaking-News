@@ -1,19 +1,21 @@
 package com.example.breakingnews.base
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Spannable
+import android.text.style.ForegroundColorSpan
 import android.view.View
+import android.widget.TextView
+import android.widget.TextView.BufferType
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
-import com.example.breakingnews.R
 import com.google.android.material.snackbar.Snackbar
-import org.koin.android.ext.android.get
-import org.koin.androidx.scope.currentScope
 import org.koin.androidx.viewmodel.ext.android.getViewModel
-import org.koin.core.KoinComponent
 import java.lang.reflect.ParameterizedType
 import kotlin.reflect.KClass
+
 
 open class BaseFragment<T : BaseViewModel> : Fragment(), InitFragment {
     val viewModel: T by lazy { getViewModel(viewModelClass()) }
@@ -70,6 +72,23 @@ open class BaseFragment<T : BaseViewModel> : Fragment(), InitFragment {
 
     override fun initRecycler() {
 
+    }
+
+    fun changePartOfTextViewColor(textView: TextView, first: String, next: String, color: Int) {
+
+
+        textView.setText(first + next, BufferType.SPANNABLE)
+        val s = textView.text as Spannable
+        val start: Int = 0
+        val end: Int = first.length
+
+        s.setSpan(
+            ForegroundColorSpan(color),
+            start,
+            end,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        textView.setText(s,BufferType.SPANNABLE)
     }
 
 }

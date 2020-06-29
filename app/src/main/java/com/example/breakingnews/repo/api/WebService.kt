@@ -4,9 +4,10 @@ import com.example.breakingnews.R
 import com.example.breakingnews.model.HeadlineResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface WebService {
 
-    @GET("top-headlines?country=us&apiKey=9565ca60c31241c28b04f9728c7775f9")
-    fun getHeadlines() : Observable<HeadlineResponse>
+    @GET("top-headlines")
+    fun getHeadlines(@Query("country") country : String ,@Query("apikey") apikey : String ) : Observable<HeadlineResponse>
 }
