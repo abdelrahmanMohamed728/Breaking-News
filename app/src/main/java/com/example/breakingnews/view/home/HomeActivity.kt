@@ -21,7 +21,11 @@ class HomeActivity : BaseActivity() {
         val homeAdapter = HomeViewPagerAdapter(this)
         homeViewPager.adapter = homeAdapter
         TabLayoutMediator(homeTabBar, homeViewPager) { tab, position ->
-            tab.text = "Top Headlines"
+            if (position == HomeViewPagerAdapter.HEADLINE_FRAGMENT) {
+                tab.text = "Top Headlines"
+            }
+            else
+                tab.text = "Search"
         }.attach()
     }
 }

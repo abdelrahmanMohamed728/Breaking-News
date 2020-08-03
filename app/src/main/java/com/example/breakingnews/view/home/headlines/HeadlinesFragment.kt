@@ -31,10 +31,10 @@ class HeadlinesFragment : BaseFragment<HeadlinesViewModel>() , OnClickItem {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.getHeadlines()
     }
 
     override fun initRecycler() {
-        viewModel.getHeadlines()
         headlinesAdapter =
             HeadlineAdapter(
                 context!!,

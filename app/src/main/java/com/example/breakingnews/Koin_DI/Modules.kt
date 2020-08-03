@@ -1,9 +1,11 @@
 package com.example.breakingnews.Koin_DI
 
 import com.example.breakingnews.repo.HeadlineRepo
+import com.example.breakingnews.repo.SearchRepo
 import com.example.breakingnews.repo.api.WebService
 import com.example.breakingnews.view.home.article.ArticleViewModel
 import com.example.breakingnews.view.home.headlines.HeadlinesViewModel
+import com.example.breakingnews.view.home.search.SearchViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -14,10 +16,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 val viewModelsModule = module {
     viewModel { HeadlinesViewModel(get()) }
     viewModel { ArticleViewModel() }
+    viewModel { SearchViewModel(get()) }
 }
 
 val repoModule = module {
-
 
     factory(named("BASE_URL")) {
         "https://newsapi.org/v2/"
@@ -33,5 +35,9 @@ val repoModule = module {
 
     factory {
         HeadlineRepo()
+    }
+
+    factory {
+        SearchRepo()
     }
 }

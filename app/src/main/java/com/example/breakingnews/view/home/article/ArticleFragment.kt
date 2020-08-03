@@ -37,7 +37,8 @@ class ArticleFragment : BaseFragment<ArticleViewModel>() {
             Picasso.get().load(it.urlToImage).into(articleImageView)
             articleTitleTV.text = it.title
             articleTV.text = it.description
-            changePartOfTextViewColor(authorTV,getString(R.string.published_by),it.author!!, Color.RED)
+            if(it.author!=null)
+            changePartOfTextViewColor(authorTV,getString(R.string.published_by)," "+it.author, Color.RED)
         })
     }
 }

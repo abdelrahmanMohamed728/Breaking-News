@@ -75,20 +75,17 @@ open class BaseFragment<T : BaseViewModel> : Fragment(), InitFragment {
     }
 
     fun changePartOfTextViewColor(textView: TextView, first: String, next: String, color: Int) {
-
-
         textView.setText(first + next, BufferType.SPANNABLE)
         val s = textView.text as Spannable
         val start: Int = 0
         val end: Int = first.length
-
         s.setSpan(
             ForegroundColorSpan(color),
             start,
             end,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
-        textView.setText(s,BufferType.SPANNABLE)
+        textView.setText(s, BufferType.SPANNABLE)
     }
 
 }
