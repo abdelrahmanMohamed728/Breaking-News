@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.breakingnews.base.BaseViewModel
 import com.example.breakingnews.model.Article
-import com.example.breakingnews.repo.SearchRepo
+import com.example.breakingnews.repo.repos.SearchRepo
 import io.reactivex.schedulers.Schedulers
 
 class SearchViewModel(var repo: SearchRepo) : BaseViewModel() {

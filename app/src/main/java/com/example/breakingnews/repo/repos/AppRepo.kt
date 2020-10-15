@@ -1,4 +1,4 @@
-package com.example.breakingnews.repo
+package com.example.breakingnews.repo.repos
 
 import com.example.breakingnews.base.BaseRepo
 

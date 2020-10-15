@@ -2,8 +2,7 @@ package com.example.breakingnews
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.R.attr.fragment
-
+import com.example.breakingnews.view.splash.SplashFragment
 
 
 class StartActivity : AppCompatActivity() {

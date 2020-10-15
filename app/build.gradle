@@ -2,7 +2,12 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
+apply plugin: 'kotlin-kapt'
+
 apply plugin: 'kotlin-android-extensions'
+
+def material_design_version = '1.2.1'
+
 
 android {
     compileSdkVersion 29
@@ -19,8 +24,15 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debug {
+                resValue("string", "breaking_news_db", "password")
+            }
         }
     }
+    packagingOptions {
+        exclude 'META-INF/atomicfu.kotlin_module'
+    }
+
 }
 
 dependencies {
@@ -77,4 +89,18 @@ dependencies {
     //Design
     implementation 'com.google.android.material:material:1.2.0-alpha04'
 
+    //Room
+    def room_version = "2.2.5"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    //rxjava_for_room
+    implementation "androidx.room:room-rxjava2:2.2.3"
+
+    //material_design
+    implementation "com.google.android.material:material:$material_design_version"
+
+    //database_debug
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
+    debugImplementation 'com.amitshekhar.android:debug-db-encrypt:1.0.6'
 }
